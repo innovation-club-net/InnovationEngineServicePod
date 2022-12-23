@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   
   s.homepage         = 'https://github.com/63583702/InnovationEngineService'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
+  s.license          = { :type => 'Commercial', :file => 'LICENSE' }
   s.author           = { 'Fred Klein' => 'support@innovation-club.net' }
   s.source           = { :git => 'https://github.com/innovation-club-net/InnovationEngineServicePod.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'

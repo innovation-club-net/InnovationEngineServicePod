@@ -7,7 +7,15 @@
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+To run the example project
+
+1. clone the repo
+2. go to the Example directory
+3. run `pod install`
+4. copy the file `InnovationEngineConfig-Example.xcconfig` into `InnovationEngineConfig.xcconfig`
+5. edit the `InnovationEngineConfig.xcconfig` file and update the configuration according to the instructions of FehrAdvice
+6. open the `InnovationEngineService.xcworkspace` workspace with Xcode
+
 
 ## Requirements
 
