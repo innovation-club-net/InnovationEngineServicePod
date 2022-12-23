@@ -22,8 +22,8 @@ pod 'InnovationEngineService'
 
 ## Author
 
-63583702, 63583702+beezital@users.noreply.github.com
+Fred Klein, support@innovation-club.net
 
 ## License
 
-InnovationEngineService is available under the MIT license. See the LICENSE file for more info.
+InnovationEngineService is available under a commercial/proprietary license only. See the LICENSE file for more info.

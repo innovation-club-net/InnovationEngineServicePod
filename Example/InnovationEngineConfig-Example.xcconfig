@@ -1,0 +1,17 @@
+//
+//  InnovationEngineConfig.xcconfig
+//  InnovationEngineDemo
+//
+//  Created by Fred on 20.09.22.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+SLASH = /
+SLASH_SLASH = $(SLASH)$(SLASH)
+
+NVTNCLB_LOADER_SERVER = https:$(SLASH_SLASH)your-instance.innovation-club.net
+NVTNCLB_ENVIRONMENT = dev
+NVTNCLB_TIMEOUT = 500
+

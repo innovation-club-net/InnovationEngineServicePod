@@ -56,6 +56,7 @@
 		8750B58B80025B6D16B7448A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		95B89CC6D2C3EA1882F5C45C /* Pods-InnovationEngineService_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InnovationEngineService_Example.debug.xcconfig"; path = "Target Support Files/Pods-InnovationEngineService_Example/Pods-InnovationEngineService_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		A04A1EE8E1316CC6A6BFD637 /* InnovationEngineService.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = InnovationEngineService.podspec; path = ../InnovationEngineService.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B626E9EE2955F10B00F99F2B /* InnovationEngineConfig-Example.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "InnovationEngineConfig-Example.xcconfig"; sourceTree = "<group>"; };
 		B662098E2954DB5B0042220C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B66209912954DB740042220C /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		B66209922954DB740042220C /* UITableViewCell+ReuseIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+ReuseIdentifier.swift"; sourceTree = "<group>"; };
@@ -113,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				B66209C42954F9750042220C /* InnovationEngineConfig.xcconfig */,
+				B626E9EE2955F10B00F99F2B /* InnovationEngineConfig-Example.xcconfig */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for InnovationEngineService */,
 				607FACE81AFB9204008FA782 /* Tests */,

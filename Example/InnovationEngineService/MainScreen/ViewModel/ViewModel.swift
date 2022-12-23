@@ -5,14 +5,34 @@ import UIKit
 // swiftlint:disable line_length
 class ViewModel {
     private(set) var clientId = Date().currentTimeMillis()
-    private(set) var loaderServer: String = Bundle.main.object(forInfoDictionaryKey: "NVTNCLB_LOADER_SERVER") as! String
-    private(set) var environment: String = Bundle.main.object(forInfoDictionaryKey: "NVTNCLB_ENVIRONMENT") as! String
-    private(set) var timeout: String = Bundle.main.object(forInfoDictionaryKey: "NVTNCLB_TIMEOUT") as! String
-    private(set) var screenID: String = "dashboard"
+    private(set) var loaderServer: String
+    private(set) var environment: String
+    private(set) var timeout: String
+    private(set) var screenID: String
     private(set) var experiment: Experiment?
     private(set) var closeEvent: CloseEvent?
     private(set) var error: String = ""
     weak var presenter: Presenter?
+    
+    
+    ///
+    /// Initialise our model with values from the `InnovationEngineConfig.xcconfig` file
+    /// or with fallback values
+    ///
+    init() {
+        clientId = Date().currentTimeMillis()
+        
+        let loaderServer = Bundle.main.object(forInfoDictionaryKey: "NVTNCLB_LOADER_SERVER") as? String ?? ""
+        self.loaderServer = !loaderServer.isEmpty ? loaderServer : "https://your-instance.innovation-club.net"
+        
+        let environment = Bundle.main.object(forInfoDictionaryKey: "NVTNCLB_ENVIRONMENT") as? String ?? ""
+        self.environment = !environment.isEmpty ? environment : "test"
+        
+        let timeout = Bundle.main.object(forInfoDictionaryKey: "NVTNCLB_TIMEOUT") as? String ?? ""
+        self.timeout = !timeout.isEmpty ? timeout : "500"
+        
+        screenID = "dashboard"
+    }
 
     func regenerateClientID() {
         self.clientId = Date().currentTimeMillis()
