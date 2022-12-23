@@ -1,0 +1,16 @@
+PODS:
+  - InnovationEngineService (0.1.0)
+
+DEPENDENCIES:
+  - InnovationEngineService (from `../`)
+
+EXTERNAL SOURCES:
+  InnovationEngineService:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  InnovationEngineService: e829514bf7533a5cfb525439e01d5566bd7a355e
+
+PODFILE CHECKSUM: 57051f48ac5ee582918905810da0cdca94614daf
+
+COCOAPODS: 1.11.3

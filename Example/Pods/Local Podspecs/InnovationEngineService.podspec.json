@@ -1,0 +1,22 @@
+{
+  "name": "InnovationEngineService",
+  "version": "0.1.0",
+  "summary": "A short description of InnovationEngineService.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/63583702/InnovationEngineService",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "63583702": "63583702+beezital@users.noreply.github.com"
+  },
+  "source": {
+    "git": "https://github.com/63583702/InnovationEngineService.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "InnovationEngineService/Classes/**/*"
+}

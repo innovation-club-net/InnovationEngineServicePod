@@ -1,0 +1,6 @@
+framework module InnovationEngineService {
+  umbrella header "InnovationEngineService-umbrella.h"
+
+  export *
+  module * { export * }
+}
