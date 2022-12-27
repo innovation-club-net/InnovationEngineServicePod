@@ -103,11 +103,20 @@ class ViewController: UIViewController {
         InnovationEngine.shared.configEnvironment = viewModel.environment
         InnovationEngine.shared.configTimeout = Int(viewModel.timeout) ?? 500
         
+        
         // Setup specific fonts to be used:
+        
+        // The first font added is used as the default one for the <body> element of the Experiments' HTML.
+        // Using "Segoe Print" here to highlight the purpose of this configuration.
+        InnovationEngine.shared.addFont(familyName: "Segoe Print",
+                                        fileContent: readBytes(for: "segoepr"))
+        
+        // Further fonts can be referred to as `font-family` CSS properties in the Experiments' HTML.
         // - muliregular
         InnovationEngine.shared.addFont(familyName: Fonts.muliRegular.fontName,
                                         fileContent: readBytes(for: Fonts.muliRegular.fileName))
         // - mulibold
+        // When specifying different styles or weights, you can use the same familyName.
         InnovationEngine.shared.addFont(familyName: Fonts.muliBold.fontName,
                                         fileContent: readBytes(for: Fonts.muliBold.fileName),
                                         descriptors: ["weight": "700"])

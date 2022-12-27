@@ -171,6 +171,15 @@ public class InnovationEngine {
     
     
     /// Registers fonts into the Innovation Engine to make them available in the WebView as font families with optional specific style and weight
+    ///
+    /// The first font added will serve as the default font for the `<body>` element of the WebView.
+    ///
+    /// When specifying different styles or weights, you can use the same familyName.
+    ///
+    /// - Parameter familyName: name of the font family, as referred to by 'font-family' CSS properties
+    /// - Parameter fileContent: content of a WOFF file
+    /// - Parameter descriptors: descriptors such as `font-style` or `font-weight` see https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face
+    ///
     public func addFont(familyName: String, fileContent: [UInt8], descriptors: [String: String]? = nil) {
         let fontAssetKey = familyName + jsonString(from: descriptors)
         guard !fontAssetKeys.contains(fontAssetKey) else { return }

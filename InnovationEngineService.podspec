@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'InnovationEngineService'
-  s.version          = '1.1.0'
+  s.version          = '1.2.0'
   s.summary          = 'The library to integrate experiments from the Innovation Engine into your app.'
   
   # This description is used to generate tags and improve search results.

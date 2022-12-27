@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		B61071D4295AF8230030CD98 /* segoepr.woff in Resources */ = {isa = PBXBuildFile; fileRef = B61071D3295AF8230030CD98 /* segoepr.woff */; };
 		B662098F2954DB5B0042220C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B662098E2954DB5B0042220C /* SceneDelegate.swift */; };
 		B66209A92954ECD60042220C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B66209A62954DBF00042220C /* Assets.xcassets */; };
 		B66209AB2954ECF40042220C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B66209AD2954ECF40042220C /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 		8750B58B80025B6D16B7448A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		95B89CC6D2C3EA1882F5C45C /* Pods-InnovationEngineService_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InnovationEngineService_Example.debug.xcconfig"; path = "Target Support Files/Pods-InnovationEngineService_Example/Pods-InnovationEngineService_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		A04A1EE8E1316CC6A6BFD637 /* InnovationEngineService.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = InnovationEngineService.podspec; path = ../InnovationEngineService.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		B61071D3295AF8230030CD98 /* segoepr.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = segoepr.woff; sourceTree = "<group>"; };
 		B626E9EE2955F10B00F99F2B /* InnovationEngineConfig-Example.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "InnovationEngineConfig-Example.xcconfig"; sourceTree = "<group>"; };
 		B662098E2954DB5B0042220C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B66209912954DB740042220C /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				B66209972954DB740042220C /* isidora_sans_alt_regular.woff */,
 				B66209982954DB740042220C /* muli_regular.woff */,
 				B66209992954DB740042220C /* muli_semibold.woff */,
+				B61071D3295AF8230030CD98 /* segoepr.woff */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B66209AE2954ED030042220C /* LaunchScreen.storyboard in Resources */,
+				B61071D4295AF8230030CD98 /* segoepr.woff in Resources */,
 				B66209BA2954F0E10042220C /* isidora_sans_alt_regular.woff in Resources */,
 				B66209BD2954F0E10042220C /* muli_semibold.woff in Resources */,
 				B66209BE2954F0E10042220C /* isidora_sans_alt_semibold.woff in Resources */,
