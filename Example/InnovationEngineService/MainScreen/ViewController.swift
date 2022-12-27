@@ -349,7 +349,6 @@ extension ViewController: ClientIDTableViewCellProtocol {
     func didTapRestartMultipleButton() {
         view.endEditing(true)
         viewModel.regenerateClientID()
-        guard !viewModel.screenID.isEmpty else { return }
         showLoading(shouldShow: true)
         getExperiments()
     }
@@ -357,7 +356,6 @@ extension ViewController: ClientIDTableViewCellProtocol {
     func didTapRestartButton() {
         view.endEditing(true)
         viewModel.regenerateClientID()
-        guard !viewModel.screenID.isEmpty else { return }
         showLoading(shouldShow: true)
         getExperiment()
     }

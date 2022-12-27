@@ -31,7 +31,8 @@ class ViewModel {
         let timeout = Bundle.main.object(forInfoDictionaryKey: "NVTNCLB_TIMEOUT") as? String ?? ""
         self.timeout = !timeout.isEmpty ? timeout : "500"
         
-        screenID = "dashboard"
+        let sampleScreenId = Bundle.main.object(forInfoDictionaryKey: "SAMPLE_SCREEN_ID") as? String ?? ""
+        screenID = !sampleScreenId.isEmpty ? sampleScreenId : "demo"
     }
 
     func regenerateClientID() {
@@ -51,6 +52,7 @@ class ViewModel {
 
     func setError(_ error: String) {
         self.error = error
+        self.closeEvent = nil
         presenter?.reloadData()
     }
 
