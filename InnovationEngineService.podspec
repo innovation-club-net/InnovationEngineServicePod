@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'InnovationEngineService'
-  s.version          = '1.2.0'
+  s.version          = '1.2.1'
   s.summary          = 'The library to integrate experiments from the Innovation Engine into your app.'
   
   # This description is used to generate tags and improve search results.
@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
   https://fehradvice.com/
   DESC
   
-  s.homepage         = 'https://github.com/63583702/InnovationEngineService'
+  s.homepage         = 'https://github.com/innovation-club-net/InnovationEngineServicePod.git'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'Commercial', :file => 'LICENSE' }
   s.author           = { 'Fred Klein' => 'support@innovation-club.net' }
