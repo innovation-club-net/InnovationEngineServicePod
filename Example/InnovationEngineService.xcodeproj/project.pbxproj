@@ -29,6 +29,7 @@
 		B66209BF2954F0EA0042220C /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66209912954DB740042220C /* Fonts.swift */; };
 		B66209C02954F0EA0042220C /* UITableViewCell+ReuseIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66209922954DB740042220C /* UITableViewCell+ReuseIdentifier.swift */; };
 		B66209C12954F0EA0042220C /* Date+Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = B66209932954DB740042220C /* Date+Time.swift */; };
+		B698BE3C29D2EE4B0047FBFC /* PresentableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B698BE3B29D2EE4B0047FBFC /* PresentableViewController.swift */; };
 		E2A50F2BC4DAE2492E2F21B9 /* Pods_InnovationEngineService_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82A70DDE14064B2F2D0B055D /* Pods_InnovationEngineService_Example.framework */; };
 		ECDC927FF0F76C66F9E2F9AF /* Pods_InnovationEngineService_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F06BEEBCB515F0EA80897E7E /* Pods_InnovationEngineService_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -79,6 +80,7 @@
 		B66209AC2954ECF40042220C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B66209AF2954ED030042220C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B66209C42954F9750042220C /* InnovationEngineConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = InnovationEngineConfig.xcconfig; sourceTree = "<group>"; };
+		B698BE3B29D2EE4B0047FBFC /* PresentableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentableViewController.swift; sourceTree = "<group>"; };
 		D076DFE6A4CB220F648F9889 /* Pods-InnovationEngineService_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InnovationEngineService_Tests.release.xcconfig"; path = "Target Support Files/Pods-InnovationEngineService_Tests/Pods-InnovationEngineService_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		F06BEEBCB515F0EA80897E7E /* Pods_InnovationEngineService_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InnovationEngineService_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -215,6 +217,7 @@
 			children = (
 				B662099B2954DB740042220C /* ViewModel */,
 				B662099E2954DB740042220C /* ViewController.swift */,
+				B698BE3B29D2EE4B0047FBFC /* PresentableViewController.swift */,
 				B662099F2954DB740042220C /* Cells */,
 				B66209A32954DB740042220C /* DataModel */,
 			);
@@ -312,10 +315,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = BQVTDB32X9;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = BQVTDB32X9;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -439,6 +444,7 @@
 			files = (
 				B66209B62954F0D10042220C /* ScreenIDTableViewCell.swift in Sources */,
 				B66209B52954F0CC0042220C /* ViewModel.swift in Sources */,
+				B698BE3C29D2EE4B0047FBFC /* PresentableViewController.swift in Sources */,
 				B66209B32954F0C30042220C /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				B66209B42954F0C90042220C /* Presenter.swift in Sources */,
@@ -596,6 +602,7 @@
 			baseConfigurationReference = 95B89CC6D2C3EA1882F5C45C /* Pods-InnovationEngineService_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = BQVTDB32X9;
 				INFOPLIST_FILE = InnovationEngineService/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -612,6 +619,7 @@
 			baseConfigurationReference = 5DE7CF1A30EA45737C051956 /* Pods-InnovationEngineService_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = BQVTDB32X9;
 				INFOPLIST_FILE = InnovationEngineService/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -627,6 +635,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 64C3288E107D1EBFAA8F6807 /* Pods-InnovationEngineService_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = BQVTDB32X9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -640,8 +649,12 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InnovationEngineService_Example.app/InnovationEngineService_Example";
 			};
 			name = Debug;
@@ -650,6 +663,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D076DFE6A4CB220F648F9889 /* Pods-InnovationEngineService_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = BQVTDB32X9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -659,8 +673,12 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/InnovationEngineService_Example.app/InnovationEngineService_Example";
 			};
 			name = Release;

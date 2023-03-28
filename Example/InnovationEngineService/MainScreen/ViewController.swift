@@ -10,6 +10,10 @@ class ViewController: UIViewController {
 
     private let viewModel = ViewModel()
 
+    // See Option 2 below at startExperiment()
+    private var containerView: UIView?
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubviews()
@@ -148,15 +152,48 @@ class ViewController: UIViewController {
         DispatchQueue.main.async {
             self.viewModel.setError("")
             self.viewModel.setExperiment(experiment)
-            experiment.startWebView(on: self, with: [
-                // the web view will cover the full screen
-                "H:|-0-[w]-0-|",
-                "V:|-0-[w]-0-|"]
-            ) { [weak self] result in
+
+            // Provide the parent view where to start the experiment in.
+            // Some options for the parent view are:
+            //     1. the main application window to run experiment full screen
+            //     2. a custom view of arbitrary size and location
+            //     3. a view presented as a page sheet
+            //
+            // Please un/comment the code associated to the various options below
+
+            
+            // Option 1: provide the main window as the parent view of the experiment in oder to start it full-screen
+//             guard let parentView = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else {
+//                 return
+//             }
+
+            
+            // Option 2: custom container view of arbitrary size and location
+            self.containerView?.removeFromSuperview()
+            let parentView = UIView(frame: CGRect(x: 10, y: 120, width: self.view.frame.width-20, height: 120))
+            parentView.backgroundColor = .white
+            parentView.layer.cornerRadius = 5;
+            parentView.layer.masksToBounds = true;
+            parentView.layer.borderWidth = 1
+            parentView.layer.borderColor = CGColor.init(gray: 0.5, alpha: 1.0)
+            self.view.addSubview(parentView)
+            self.containerView = parentView
+            
+
+            // Option 3: present in a page sheet
+//            let presentableViewController = PresentableViewController()
+//            presentableViewController.modalPresentationStyle = .pageSheet
+//            guard let parentView = presentableViewController.view else { return }
+//            parentView.backgroundColor = .white
+            
+
+            experiment.startWebView(inside: parentView) { [weak self] result in
                 switch result {
                 case .failure(let error):
                     // handle the error
                     self?.viewModel.setError(error.localizedDescription)
+                    // Option 2:
+                    self?.containerView?.removeFromSuperview()
 
                 case .success(let event):
                     // handle the event
@@ -164,8 +201,16 @@ class ViewController: UIViewController {
                     print(event.treatmentUuid!)
                     print(event.interaction!)
                     self?.viewModel.setCloseEvent(event)
+                    // Option 2:
+                    self?.containerView?.removeFromSuperview()
                 }
+                // Option 3:
+//                 presentableViewController.dismiss(animated: true)
             }
+            
+            // Option 3:
+            // Mind that no event will be recorded if the user dismisses the sheet by herself.
+//            self.present(presentableViewController, animated: true)
         }
     }
 

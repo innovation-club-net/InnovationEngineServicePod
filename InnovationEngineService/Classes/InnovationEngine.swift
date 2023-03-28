@@ -18,8 +18,6 @@ public class InnovationEngine {
     
     // MARK: - URL Session setup
     public static var shared: InnovationEngine = InnovationEngine()
-    private lazy var sessionConfiguration = URLSessionConfiguration.default
-    private lazy var urlSession = URLSession(configuration: sessionConfiguration)
     
     /// Instance of url for getting single Experiment
     private(set) var loaderUrl: String?
@@ -41,12 +39,12 @@ public class InnovationEngine {
     }
     
     /// The duration in miliseconds of the timeout
-    public var configTimeout: Int = 500 {
-        didSet {
-            sessionConfiguration.timeoutIntervalForResource = TimeInterval(Double(self.configTimeout) / 1000)
-        }
-    }
+    public var configTimeout: Int = 500
+    
+    
     public var deepLinkPrefix: String?
+    
+    
     /// Returns an instance of Experiment if any is applicable for the given 'screenID' or returns Error
     /// Error can be received in the case of empty Experiment or excluded arbitrary trigger conditions
     ///
@@ -86,7 +84,10 @@ public class InnovationEngine {
         
         let urlWithQueryItems = setUpURLWithQueryItems(for: url, with: queryItems)
         
-        urlSession.dataTask(with: urlWithQueryItems, completionHandler: { data, response, error in
+        let sessionConfig = URLSessionConfiguration.default
+        sessionConfig.timeoutIntervalForResource = TimeInterval(Double(self.configTimeout) / 1000)
+        let session = URLSession(configuration: sessionConfig)
+        session.dataTask(with: urlWithQueryItems, completionHandler: { data, response, error in
             if let error = error { return completion(.failure(RequestError.error(error)) ) } // Handle error
             
             guard
@@ -152,7 +153,10 @@ public class InnovationEngine {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         
-        urlSession.dataTask(with: request, completionHandler: { data, response, error in
+        let sessionConfig = URLSessionConfiguration.default
+        sessionConfig.timeoutIntervalForResource = TimeInterval(Double(self.configTimeout) / 1000)
+        let session = URLSession(configuration: sessionConfig)
+        session.dataTask(with: request, completionHandler: { data, response, error in
             if let error = error { return completion(.failure(RequestError.error(error)) ) } // Handle error
             guard let data = data,
                   let experimentsData = try? JSONDecoder().decode([ExperimentData].self, from: data) else { return completion(.failure(RequestError.parsing)) } // Parse experiments from data

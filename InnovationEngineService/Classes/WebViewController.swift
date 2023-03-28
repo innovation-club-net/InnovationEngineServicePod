@@ -4,33 +4,46 @@ import WebKit
 // swiftlint:disable all
 @available(iOS 13.0, *)
 class WebViewViewController: UIViewController {
-    var webView = WKWebView()
-    private let loadingView = UIView()
+    var webView: WKWebView?
 
     private var experiment: Experiment?
-    private var visualFormatConstraints: [String]?
+    
     private var completion: (Result<CloseEvent, Error>) -> Void
+        
 
-    init(experiment: Experiment, visualFormatConstraints: [String]? = nil, completion: @escaping (Result<CloseEvent, Error>) -> Void) {
+    init(experiment: Experiment, completion: @escaping (Result<CloseEvent, Error>) -> Void) {
         self.experiment = experiment
-        self.visualFormatConstraints = visualFormatConstraints
         self.completion = completion
         super.init(nibName: nil, bundle: nil)
     }
 
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .clear
         setupWebView()
-        addSubviews()
-        setupConstrains()
-        setupTapGestureToView()
     }
 
+    
+    override func viewDidLayoutSubviews() {
+        if let webView = webView {
+            webView.frame = view.bounds
+        }
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        webView?.removeFromSuperview()
+        webView = nil
+        experiment = nil
+        super.viewWillDisappear(animated)
+    }
+
+    
     private func setupWebView() {
         let webConfiguration = WKWebViewConfiguration()
         
@@ -39,43 +52,20 @@ class WebViewViewController: UIViewController {
         let contentController = webConfiguration.userContentController
         contentController.add(self, name: JSCommand.closeWebView.rawValue)
         contentController.add(self, name: JSCommand.setFonts.rawValue)
-        
-        webView.isOpaque = false
-        webView.backgroundColor = .white.withAlphaComponent(0.75)
-        webView.scrollView.backgroundColor = .clear
-        
-        self.webView = webView
-    }
 
-    private func addSubviews() {
+        webView.isOpaque = false
+        webView.scrollView.backgroundColor = .clear
+
+        self.webView = webView
+        
         view.addSubview(webView)
     }
-
-    private func setupConstrains() {
-        webView.translatesAutoresizingMaskIntoConstraints = false
-        guard let visualFormatConstraints = visualFormatConstraints, !visualFormatConstraints.isEmpty else {
-            NSLayoutConstraint.activate([
-                webView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-                webView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-                webView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                webView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-            ])
-            return
-        }
-        var allConstraints = [NSLayoutConstraint]()
-        visualFormatConstraints.forEach { visualFormat in
-            let constraints = NSLayoutConstraint.constraints(withVisualFormat: visualFormat, metrics: nil, views: ["w": webView])
-            allConstraints.append(contentsOf: constraints)
-        }
-        NSLayoutConstraint.activate(allConstraints)
-    }
     
-    private func setupTapGestureToView() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-        view.addGestureRecognizer(tap)
-    }
+
     
     private func handleCloseEvent(_ messageValue: String) {
+        closeWebView()
+
         let jsonData = Data(messageValue.utf8)
         do {
             let closeEvent = try JSONDecoder().decode(CloseEvent.self, from: jsonData)
@@ -83,14 +73,13 @@ class WebViewViewController: UIViewController {
         } catch let error {
             completion(.failure(error))
         }
-        dismiss(animated: false)
     }
     
     private func handleFontAction(_ message: WKScriptMessage) {
         if let message = message.body as? String, message == JSCommand.setFonts.rawValue {
             guard let fontAssetsJson = InnovationEngine.shared.fontAssetsJson() else { return }
             let script = "addFontAssets(\(fontAssetsJson))"
-            webView.evaluateJavaScript(script) { _, error in
+            webView?.evaluateJavaScript(script) { _, error in
                 if error == nil {
 //                    print("Fonts injected\n")
                 } else {
@@ -100,8 +89,16 @@ class WebViewViewController: UIViewController {
         }
     }
     
-    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
-        dismiss(animated: false)
+
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        webView?.configuration.userContentController.removeScriptMessageHandler(forName: JSCommand.closeWebView.rawValue)
+        webView?.configuration.userContentController.removeScriptMessageHandler(forName: JSCommand.setFonts.rawValue)
+        webView?.navigationDelegate = nil
+    }
+    
+    private func closeWebView() {
+        view.removeFromSuperview()
     }
 }
 
@@ -109,25 +106,6 @@ class WebViewViewController: UIViewController {
 
 @available(iOS 13.0, *)
 extension WebViewViewController: WKNavigationDelegate {
-    public func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        webView.addSubview(loadingView)
-        loadingView.translatesAutoresizingMaskIntoConstraints = false
-        loadingView.backgroundColor = UIColor.clear.withAlphaComponent(0.5)
-        NSLayoutConstraint.activate([
-            loadingView.topAnchor.constraint(equalTo: webView.topAnchor),
-            loadingView.bottomAnchor.constraint(equalTo: webView.bottomAnchor),
-            loadingView.leadingAnchor.constraint(equalTo: webView.leadingAnchor),
-            loadingView.trailingAnchor.constraint(equalTo: webView.trailingAnchor)
-        ])
-    }
-
-    public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        loadingView.removeFromSuperview()
-    }
-
-    public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        loadingView.removeFromSuperview()
-    }
 
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         if let url = navigationAction.request.url,
